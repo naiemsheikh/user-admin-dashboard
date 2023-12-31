@@ -133,14 +133,14 @@
     var gridOptions = {
         columnDefs: columnDefs,
         rowData: rowData,
-        enableRtl: isRtl,
-    columnDefs: columnDefs,
+    //    enableRtl: isRtl,
+    // columnDefs: columnDefs,
     rowSelection: "multiple",
     floatingFilter: true,
     filter: true,
     pagination: true,
     paginationPageSize: 20,
-    pivotPanelShow: "always",
+    // pivotPanelShow: "always",
     colResizeDefault: "shift",
     animateRows: true,
     resizable: true
