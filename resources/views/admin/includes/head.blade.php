@@ -8,7 +8,7 @@
         content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
 
     <title>{{ $title }}</title>
-    <link rel="shortcut icon" type="image/x-icon" href="admin/app-assets/images/ico/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('admin/app-assets/images/ico/favicon.ico')}}">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">
 
 

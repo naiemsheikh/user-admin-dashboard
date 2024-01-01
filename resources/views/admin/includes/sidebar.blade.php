@@ -21,7 +21,7 @@
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
             <li class=" nav-item <?php if ($menuActive == 'home') {
                 echo 'active';
-            } ?>"><a href="index.html"><i class="feather icon-home"></i><span
+            } ?>"><a href="{{url('/admin/home')}}"><i class="feather icon-home"></i><span
                         class="menu-title" data-i18n="Dashboard">Dashboard</span></a>
 
             </li>

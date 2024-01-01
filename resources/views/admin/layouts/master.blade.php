@@ -31,9 +31,9 @@
 
             <div class="content-body">
                 <!-- Dashboard Analytics Start -->
-                <section id="dashboard-analytics">
+                
                    @yield('main-content')
-                </section>
+               
                 <!-- Dashboard Analytics end -->
 
             </div>

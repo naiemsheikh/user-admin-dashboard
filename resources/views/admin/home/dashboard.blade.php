@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 @section('main-content')
-
+<section id="dashboard-analytics">
 <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12">
         <div class="card bg-analytics text-white">
@@ -26,5 +26,5 @@
     </div>
    
 </div>
-
+ </section>
 @stop
