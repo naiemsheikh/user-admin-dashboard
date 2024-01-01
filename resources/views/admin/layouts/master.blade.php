@@ -26,8 +26,9 @@
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
         <div class="content-wrapper">
-            <div class="content-header row">
-            </div>
+            {{-- breadcrumb --}}
+            @yield('header-content')
+            {{-- breadcrumb --}}
 
             <div class="content-body">
                 <!-- Dashboard Analytics Start -->
@@ -39,6 +40,7 @@
             </div>
         </div>
     </div>
+    
     <!-- END: Content-->
 
     <div class="sidenav-overlay"></div>

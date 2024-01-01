@@ -21,8 +21,8 @@
 <script src="{{ asset('admin/app-assets/js/scripts/components.js') }}"></script>
 <!-- END: Theme JS-->
   {{-- BEGIN: Page JS --}}
-  <script src="{{asset('admin/app-assets/vendors/js/tables/ag-grid/ag-grid-community.min.noStyle.js')}}"></script>
-  <script src="{{asset('admin/app-assets/js/scripts/pages/app-user.js')}}"></script>
+  {{-- <script src="{{asset('admin/app-assets/vendors/js/tables/ag-grid/ag-grid-community.min.noStyle.js')}}"></script> --}}
+  {{-- <script src="{{asset('admin/app-assets/js/scripts/pages/app-user.js')}}"></script> --}}
 <script src="{{asset('admin/app-assets/js/scripts/ui/data-list-view.js')}}"></script>
   {{-- END: Page JS --}}
 

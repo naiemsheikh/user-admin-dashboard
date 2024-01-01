@@ -1,120 +1,178 @@
 @extends('admin.layouts.master')
-@section('main-content')
 
-<!-- users filter start -->
-<div class="card">
-    <div class="card-header">
-        <h4 class="card-title">Filters</h4>
-        <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
-        <div class="heading-elements">
-            <ul class="list-inline mb-0">
-                <li><a data-action="collapse"><i class="feather icon-chevron-down"></i></a></li>
-                <li><a data-action=""><i class="feather icon-rotate-cw users-data-filter"></i></a></li>
-                <li><a data-action="close"><i class="feather icon-x"></i></a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="card-content collapse show">
-        <div class="card-body">
-            <div class="users-list-filter">
-                <form>
-                    <div class="row">
-                        <div class="col-12 col-sm-6 col-lg-3">
-                            <label for="users-list-role">Role</label>
-                            <fieldset class="form-group">
-                                <select class="form-control" id="users-list-role">
-                                    <option value="">All</option>
-                                    <option value="user">User</option>
-                                    <option value="staff">Staff</option>
-                                </select>
-                            </fieldset>
-                        </div>
-                        <div class="col-12 col-sm-6 col-lg-3">
-                            <label for="users-list-status">Status</label>
-                            <fieldset class="form-group">
-                                <select class="form-control" id="users-list-status">
-                                    <option value="">All</option>
-                                    <option value="Active">Active</option>
-                                    <option value="Blocked">Blocked</option>
-                                    <option value="deactivated">Deactivated</option>
-                                </select>
-                            </fieldset>
-                        </div>
-                        <div class="col-12 col-sm-6 col-lg-3">
-                            <label for="users-list-verified">Verified</label>
-                            <fieldset class="form-group">
-                                <select class="form-control" id="users-list-verified">
-                                    <option value="">All</option>
-                                    <option value="true">Yes</option>
-                                    <option value="false">No</option>
-                                </select>
-                            </fieldset>
-                        </div>
-                        <div class="col-12 col-sm-6 col-lg-3">
-                            <label for="users-list-department">Department</label>
-                            <fieldset class="form-group">
-                                <select class="form-control" id="users-list-department">
-                                    <option value="">All</option>
-                                    <option value="Sales">Sales</option>
-                                    <option value="Devlopment">Devlopment</option>
-                                    <option value="Management">Management</option>
-                                </select>
-                            </fieldset>
-                        </div>
+@section('header-content')
+    <div class="content-header row">
+        <div class="content-header-left col-lg-12">
+            <div class="row breadcrumbs-top">
+                <div class="col-12">
+                    <h2 class="content-header-title float-left mb-0">{{ $title }}</h2>
+                    <div class="breadcrumb-wrapper col-12">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{{ url('/admin/home') }}">Home</a>
+                            </li>
+                            <li class="breadcrumb-item"><a href="#">Data List</a>
+                            </li>
+                            <li class="breadcrumb-item active">{{ $title }}
+                            </li>
+                        </ol>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<!-- users filter end -->
-<!-- Ag Grid users list section start -->
-<div id="basic-examples">
-    <div class="card">
-        <div class="card-content">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="ag-grid-btns d-flex justify-content-between flex-wrap mb-1">
-                            <div class="dropdown sort-dropdown mb-1 mb-sm-0">
-                                <button class="btn btn-white filter-btn dropdown-toggle border text-dark" type="button" id="dropdownMenuButton6" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    1 - 20 of 50
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton6">
-                                    <a class="dropdown-item" href="#">20</a>
-                                    <a class="dropdown-item" href="#">50</a>
-                                </div>
-                            </div>
-                            <div class="ag-btns d-flex flex-wrap">
-                                <input type="text" class="ag-grid-filter form-control w-50 mr-1 mb-1 mb-sm-0" id="filter-text-box" placeholder="Search...." />
-                                <div class="action-btns">
-                                    <div class="btn-dropdown ">
-                                        <div class="btn-group dropdown actions-dropodown">
-                                            <button type="button" class="btn btn-white px-2 py-75 dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                Actions
-                                            </button>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="#"><i class="feather icon-trash-2"></i> Delete</a>
-                                                <a class="dropdown-item" href="#"><i class="feather icon-clipboard"></i> Archive</a>
-                                                <a class="dropdown-item" href="#"><i class="feather icon-printer"></i> Print</a>
-                                                <a class="dropdown-item" href="#"><i class="feather icon-download"></i> CSV</a>
+@stop
+@section('main-content')
+
+    {{-- DataTable --}}
+    <section id="data-list-view" class="data-list-view-header">
+        <div class="action-btns d-none">
+            <div class="btn-dropdown mr-1 mb-1">
+                <div class="btn-group dropdown actions-dropodown">
+                    <button type="button" class="btn btn-white px-1 py-1 dropdown-toggle waves-effect waves-light"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Actions
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#"><i class="feather icon-trash"></i>Delete</a>
+                        <a class="dropdown-item" href="#"><i class="feather icon-archive"></i>Archive</a>
+                        <a class="dropdown-item" href="#"><i class="feather icon-file"></i>Print</a>
+                        <a class="dropdown-item" href="#"><i class="feather icon-save"></i>Another Action</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DataTable starts -->
+        <div class="table-responsive">
+            <table class="table data-list-view">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>NAME</th>
+                        <th>Username</th>
+                        <th>Login ID</th>
+                        {{-- <th>Section </th> --}}
+                        <th>Role</th>
+                        {{-- <th>Designation</th> --}}
+                        <th>Status</th>
+                        <th>ACTION</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+
+
+
+
+
+                    @foreach ($dataRows as $item)
+                        <tr>
+                            <td></td>
+                            <td class="user-name">{{ $item->name }}</td>
+                            <td class="user-username">{{ $item->username }}</td>
+                            <td class="user-log_id">{{ $item->log_id }}</td>
+                            {{-- <td class="user-designation_name">{{ $item->designation_name }}</td>
+                            <td class="user-section_name">{{ $item->section_name }}</td> --}}
+                            <td class="user-role_name">{{ $item->role_name }}</td>
+
+                            <td>
+                                @if ($item->status == 1)
+                                    <div class="chip chip-success">
+                                        <div class="chip-body">
+                                            <div class="chip-text">
+                                                Enabled
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                @else
+                                    <div class="chip chip-danger">
+                                        <div class="chip-body">
+                                            <div class="chip-text">
+                                                Disabled
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                            </td>
+
+                            <td class="product-action">
+                                <span class="primary action-edit"><i class="feather icon-edit"></i></span>
+                                <span class="danger action-delete"><i class="feather icon-trash"></i></span>
+                            </td>
+                        </tr>
+                    @endforeach
+
+                </tbody>
+            </table>
+        </div>
+        <!-- DataTable ends -->
+
+        <!-- add new sidebar starts -->
+        <div class="add-new-data-sidebar">
+            <div class="overlay-bg"></div>
+            <div class="add-new-data">
+                <div class="div mt-2 px-2 d-flex new-data-title justify-content-between">
+                    <div>
+                        <h4 class="text-uppercase">List View Data</h4>
+                    </div>
+                    <div class="hide-data-sidebar">
+                        <i class="feather icon-x"></i>
+                    </div>
+                </div>
+                <div class="data-items pb-3">
+                    <div class="data-fields px-2 mt-3">
+                        <div class="row">
+                            <div class="col-sm-12 data-field-col">
+                                <label for="data-name">Name</label>
+                                <input type="text" class="form-control" id="data-name">
+                            </div>
+                            <div class="col-sm-12 data-field-col">
+                                <label for="data-category"> Category </label>
+                                <select class="form-control" id="data-category">
+                                    <option>Audio</option>
+                                    <option>Computers</option>
+                                    <option>Fitness</option>
+                                    <option>Appliance</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-12 data-field-col">
+                                <label for="data-status">Order Status</label>
+                                <select class="form-control" id="data-status">
+                                    <option>Pending</option>
+                                    <option>Canceled</option>
+                                    <option>Delivered</option>
+                                    <option>On Hold</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-12 data-field-col">
+                                <label for="data-price">Price</label>
+                                <input type="text" class="form-control" id="data-price">
+                            </div>
+                            <div class="col-sm-12 data-field-col data-list-upload">
+                                <form action="#" class="dropzone dropzone-area" id="dataListUpload">
+                                    <div class="dz-message">Upload Image</div>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div id="myGrid" class="aggrid ag-theme-material"></div>
+                <div class="add-data-footer d-flex justify-content-around px-3 mt-2">
+                    <div class="add-data-btn">
+                        <button class="btn btn-primary">Add Data</button>
+                    </div>
+                    <div class="cancel-data-btn">
+                        <button class="btn btn-outline-danger">Cancel</button>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-<!-- Ag Grid users list section end -->
+        <!-- add new sidebar ends -->
+    </section>
+    {{-- DataTable --}}
+
 @stop
 @section('script')
-<script type="text/javascript" charset="utf-8">
+    {{-- <script type="text/javascript" charset="utf-8">
     // specify the columns
     var columnDefs = [
         {headerName: 'Name', field: 'name'},
@@ -151,6 +209,6 @@
 
     // create the grid passing in the div to use together with the columns & data we want to use
     new agGrid.Grid(eGridDiv, gridOptions);
-</script>
+</script> --}}
 
 @stop

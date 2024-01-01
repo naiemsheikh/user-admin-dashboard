@@ -22,10 +22,12 @@
     <link rel="stylesheet" type="text/css"
         href="{{ asset('admin/app-assets/vendors/css/extensions/tether-theme-arrows.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('admin/app-assets/vendors/css/extensions/tether.min.css') }}">
-    <link rel="stylesheet" type="text/css"
-        href="{{ asset('admin/app-assets/vendors/css/extensions/shepherd-theme-default.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('admin/app-assets/vendors/css/extensions/shepherd-theme-default.css') }}">
     <!-- END: Vendor CSS-->
-
+    <link rel="stylesheet" type="text/css" href="{{asset('admin/app-assets/vendors/css/tables/datatable/datatables.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('admin/app-assets/css/core/menu/menu-types/vertical-menu.css')}}">
+   <link rel="stylesheet" type="text/css" href="{{asset('admin/app-assets/vendors/css/tables/datatable/extensions/dataTables.checkboxes.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('admin/app-assets/css/pages/data-list-view.css')}}">
     <!-- BEGIN: Theme CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('admin/app-assets/css/bootstrap.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('admin/app-assets/css/bootstrap-extended.css') }}">
